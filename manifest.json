@@ -1,0 +1,13 @@
+{
+	"name": "Session Bookmarker",
+	"description": "Saves the URL of all tabs in current window for easy revisits.",
+	"version": "1.0",
+	"permissions": ["tabs", "storage"],
+	"action": {
+		"default_popup": "popup.html"
+	},
+	// "background": {
+	// 	"service_worker": "background.js"
+	// },
+	"manifest_version": 3
+}
