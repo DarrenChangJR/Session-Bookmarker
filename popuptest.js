@@ -9,7 +9,7 @@ function saveSession() {
       console.log(localStorage.getItem(getCounter()));
       console.log(getCounter());
       localStorage.setItem("counter", getCounter()+1);
-      closePopup();
+      // closePopup();
     };
   });
 }
@@ -44,12 +44,11 @@ function reopenSession() {
 }
 
 function deleteSession() {
-  let num = this.id;
+  let num = this.id.split("small")[0];
   if (confirm(`This session will be irreversibly wiped. Proceed?`)) {
     localStorage.removeItem(num);
-    document.querySelectorAll(`[id=${CSS.escape(num)}]`).forEach(function(elem) {
-      elem.remove();
-    });
+    document.querySelector(`[id=big${CSS.escape(num)}]`).remove();
+    document.querySelector(`[id=small${CSS.escape(num)}]`).remove();
     localStorage.setItem("htmlchunk", document.querySelector("#sessions-chunk").outerHTML);
   };
 }
