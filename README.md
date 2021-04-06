@@ -1,2 +1,2 @@
 # session-bookmarker
- Chrome Extension (in production)
+ Chrome Extension (in development)

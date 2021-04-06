@@ -1,29 +1,25 @@
 function reopenSession() {
-    chrome.storage.sync.get(['session1'], function(result) {
-        // var i = 0;
-        // for (i = 0; i<result.length; i++) {
-        //     console.log(result.session1[i]);
-        //     chrome.tabs.create({url: result.session1[i]});
-        // }
-        // console.log(result.session1);
-        result.session1.forEach(function(urlSession) {
-            chrome.tabs.create({url: urlSession});
-        })
-    });
+  var urlArray = JSON.parse(localStorage.getItem("session1"));
+  urlArray.forEach(function(urlSession) {
+    chrome.tabs.create({url: urlSession});
+  })
+}
+
+function deleteSession() {
+    localStorage.removeItem("session1");
 }
 
 document.addEventListener("DOMContentLoaded", function(){
   document.querySelector("#saveCurrentWindow").addEventListener("click", function() {
     chrome.tabs.query({currentWindow: true}, function(tabs) {
-    	var urlArray = [];
-    	tabs.forEach(function(tab) {
-    		urlArray.push(tab.url);
-    	})
-    	console.log(urlArray);
-    	chrome.storage.sync.set({session1 : urlArray}, function(){
-    		console.log('"session1" has been saved successfully.')
-    	});
+      var urlArray = [];
+      tabs.forEach(function(tab) {
+        urlArray.push(tab.url);
+      })
+      localStorage.setItem("session1", JSON.stringify(urlArray));
+      console.log(localStorage.getItem("session1"));
     });
   });
-  document.querySelector("#session").addEventListener("click", reopenSession);
+  document.querySelector("#opener").addEventListener("click", reopenSession);
+  document.querySelector("#deleter").addEventListener("click", deleteSession);
 });
