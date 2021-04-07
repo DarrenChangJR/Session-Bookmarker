@@ -6,8 +6,6 @@ function saveSession() {
         urlArray.push(tab.url);
       });
       localStorage.setItem(getCounter(), JSON.stringify(urlArray));
-      console.log(localStorage.getItem(getCounter()));
-      console.log(getCounter());
       localStorage.setItem("counter", getCounter()+1);
       closePopup();
     };
@@ -26,9 +24,7 @@ function addhtml() {
     bigButt.textContent = sessionName;
     smallButt.textContent = "X";
     document.querySelector("#sessions-chunk").append(bigButt, smallButt);
-    console.log(bigButt, smallButt);
     localStorage.setItem("htmlchunk", document.querySelector("#sessions-chunk").outerHTML);
-    console.log(localStorage.getItem("htmlchunk"));
     return true;
   } else {
     return false;
@@ -45,7 +41,7 @@ function reopenSession() {
 
 function deleteSession() {
   let num = this.id.split("small")[1];
-  if (confirm(`This session will be irreversibly wiped. Proceed?`)) {
+  if (confirm(`${document.querySelector("#big"+CSS.escape(num)).textContent} will be irreversibly wiped. Proceed?`)) {
     localStorage.removeItem(num);
     document.querySelector(`[id=big${CSS.escape(num)}]`).remove();
     document.querySelector(`[id=small${CSS.escape(num)}]`).remove();
@@ -78,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function() {
   } else {
     document.querySelector("#sessions-chunk").innerHTML = localStorage.getItem("htmlchunk");
   };
-  console.log(document.querySelector("#sessions-chunk").outerHTML);
   document.querySelector("#saveCurrentWindow").addEventListener("click", saveSession);
   clickAttacher();
   document.querySelector("#reset").addEventListener("click", function() {
