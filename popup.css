@@ -26,14 +26,18 @@ button {
 }
 
 button.big-button {
-  width: 90%;
+  width: 75%;
 /*  display: inline;
 */}
 
 button.small-button {
-  width: 10%;
+  width: 8%;
 /*  display: inline;
 */}
+
+button.rename-button {
+  width: 17%;
+}
 
 /*:root {
   --backgroundColor: rgba(246, 241, 209);
