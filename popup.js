@@ -1,5 +1,5 @@
 function saveSession() {
-  chrome.tabs.query({currentWindow: true}, function(tabs) {
+  browser.tabs.query({currentWindow: true}, function(tabs) {
     if (addhtml()) {
       var urlArray = [];
       tabs.forEach(function(tab) {
@@ -39,7 +39,7 @@ function reopenSession() {
   let num = this.id.split("big")[1];
   var urlArray = JSON.parse(localStorage.getItem(num));
   urlArray.forEach(function(urlSession) {
-    chrome.tabs.create({url: urlSession});
+    browser.tabs.create({url: urlSession});
   });
 }
 
