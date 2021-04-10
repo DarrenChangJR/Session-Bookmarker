@@ -1,2 +1,2 @@
 # Session Bookmarker
- Chrome Extension (in development)
+ Chrome Extension
