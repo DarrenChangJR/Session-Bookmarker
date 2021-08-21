@@ -28,7 +28,7 @@ function addhtml() {
     renameButt.textContent = "Rename";
     smallButt.textContent = "X";
     document.querySelector("#sessions-chunk").append(bigButt, renameButt, smallButt);
-    localStorage.setItem("htmlchunk", document.querySelector("#sessions-chunk").outerHTML);
+    localStorage.setItem("htmlchunk", document.querySelector("#sessions-chunk").innerHTML);
     return true;
   } else {
     return false;
